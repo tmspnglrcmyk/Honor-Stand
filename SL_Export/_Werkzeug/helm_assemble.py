@@ -137,7 +137,7 @@ hmin = np.array([v.co[:] for v in high.data.vertices]).min(0); hmax = np.array([
 plan = {
  'LOD2': [('Helmet_42_LOD2.obj', 0), ('Face_guard_LOD2.obj', 1), ('Liner_LOD2.obj', 3), ('Vorhang_LOD2.obj', 4)],
  'LOD1': [('Helmet_42_LOD1.obj', 0), ('Face_guard_LOD1.obj', 1), ('Vorhang_LOD1.obj', 4)],
- 'LOD0': [('Helmet_42_LOD0.obj', 0), ('Face_guard_LOD0.obj', 1), ('Vorhang_LOD0.obj', 4)],
+ 'LOD0': [('Helm_LOD0_v2.obj', 0)],
 }
 label = {'LOD2': 'Medium', 'LOD1': 'Low', 'LOD0': 'Lowest'}
 cy_ref = cy
@@ -155,7 +155,11 @@ for key, lst in plan.items():
             collapse(o, cand[0], MATS[0], 1, ziel=va[..., :3][va[..., 3] > 0.5].mean(0), key='Vorhang_auf_Glocke'); i = 0
         elif key == 'LOD0': collapse(o, cand[i], MATS[i], 1, ziel=aussen_farbe(cand[i], MATS[i]))
         set_mat(o, i); objs.append(o)
-    o = join(objs, f'Helm_{key}')
+    if len(objs) > 1: o = join(objs, f'Helm_{key}')
+    else:
+        o = objs[0]; o.name = f'Helm_{key}'; o.data.name = o.name
+        for c in list(o.users_collection): c.objects.unlink(o)
+        col.objects.link(o)
     V = np.array([v.co[:] for v in o.data.vertices]); ueber = float(max((hmin - V.min(0)).max(), (V.max(0) - hmax).max(), 0))
     for v in o.data.vertices: v.co = Vector([min(max(v.co[i], hmin[i]), hmax[i]) for i in range(3)])
     V = np.array([v.co[:] for v in o.data.vertices]); dev = float(max(np.abs(V.min(0) - hmin).max(), np.abs(V.max(0) - hmax).max()))
@@ -243,6 +247,8 @@ def lod_bytes(o):
         ks = list(keys)
         buf = b''.join(np.array(k[0] + k[1] + k[2], np.uint16).tobytes() for k in ks) + np.array(ind, np.uint16 if len(ks) < 65536 else np.uint32).tobytes()
         total += len(zlib.compress(buf, 9)) * 0.82; nverts[MATS[i]] = len(ks)
+    # Kopfdaten je Materialfläche (Domains, Schlüssel); aus der Messung am Helm v1 hergeleitet: ~75 Byte je Fläche, ~20 je leerer Fläche (kalibriert auf 1,9)
+    total += 75 * len(by) + 20 * (len(MATS) - len(by))
     return total, nverts
 r = float(np.linalg.norm(hmax - hmin) / 2)
 dm, dlo, dl = min(r / 0.24, 512), min(r / 0.06, 512), min(r / 0.03, 512)
@@ -267,6 +273,6 @@ if os.path.exists(os.path.join(bd, 'Helm.blend1')): os.remove(os.path.join(bd, '
 rep = dict(objekt='Helm', masse_m=[round(float(x), 4) for x in hmax - hmin], radius_m=round(r, 4), dreiecke=tri,
            vertices=VC, bytes_geschaetzt={k: int(v) for k, v in B.items()}, anteil_uploader=anteil, farbpunkte=farbpunkte,
            lod_bbox={dd['label']: dict(geklemmt_mm=dd['geklemmt_mm'], vorher_mm=dd['vorher_mm'], nachher_mm=dd['nachher_mm']) for dd in lods.values()},
-           download_schaetzwert=round(est, 3), download_uploader_geschaetzt=round(est * 0.706, 3))
+           download_schaetzwert=round(est, 3), download_uploader_geschaetzt=round(est * 0.706, 3), download_obergrenze_faktor_1=round(est, 3))
 json.dump(rep, open(os.path.join(d, 'bericht.json'), 'w'), indent=1, ensure_ascii=False)
 print('BERICHT', json.dumps(rep, ensure_ascii=False))

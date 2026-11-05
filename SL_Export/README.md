@@ -7,9 +7,9 @@ Axt, Schild, Speer und Helm als statische Dekoobjekte für Second Life. Gemeinsa
 | Axt | 0,27 × 0,024 × 0,114 | 870 / 422 / 162 / 18 | 0,66 | ~1 |
 | Schild | 0,85 × 0,105 × 0,85 | 3.482 / 1.002 / 301 / 30 | 0,77 | ~1 |
 | Speer | 0,046 × 0,035 × 2,20 | 12.506 / 702 / 122 / 14 | 1,33 | ~1 |
-| Helm | 0,234 × 0,323 × 0,324 | 173.917 / 11.970 / 2.314 / 27 | 1,36 | ~1, knapp |
+| Helm (Fassung 2) | 0,234 × 0,323 × 0,324 | 173.917 / 9.970 / 2.314 / 12 | 1,0 | ~1 |
 
-Schätzung mit dem eigenen Schätzer und Faktor 0,706. Nicht im Viewer gemessen. Upload, Land Impact und Gebühren werden im SL-Viewer geprüft.
+Schätzung mit dem eigenen Schätzer und Faktor 0,706. Gemessen ist bisher nur der Helm in Fassung 1 (Uploader 1,9). Daraus ergibt sich ein Aufschlag von rund 75 Byte Kopfdaten je Materialfläche, den der Schätzer bis dahin nicht kannte. Neu gerechnet liegen Axt bei 0,86, Schild bei 0,96 und Speer bei **1,52**, der Speer dürfte also auf 2 LI gerundet werden. Upload, Land Impact und Gebühren werden im SL-Viewer geprüft.
 
 ## Ablauf
 

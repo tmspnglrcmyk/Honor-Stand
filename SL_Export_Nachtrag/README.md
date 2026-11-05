@@ -6,9 +6,10 @@ Testexporte aus den nachgereichten Quellen. Der bisherige Export unter `SL_Expor
 |---|---|---|
 | `Schild/` | Schild aus `Shield.blend` (Rabenschild), 0,85 m | 0,80 |
 | `viking-chest/` | Wikingerkiste, 0,90 × 0,41 × 0,53 m | 0,27 |
+| `Speer/` | Wurfspeer aus `spear-nachtrag-modell.fbx`, 1,44 m, ein Material | 1,08 |
 | `Vorschau.png` | gemeinsame Vorschau, dazu der neue Speer im Vergleich | |
 
-Aus dem neuen Speer wurde kein Testexport erstellt, Begründung unten.
+Der neue Speer wurde auf Wunsch nachträglich SL-fertig gemacht, Einzelheiten in `Speer/ANLEITUNG.md`. Die Werte für Schild und Kiste in der Tabelle stammen noch vom alten Schätzer. Mit dem Kopfaufschlag aus der Helm-Messung liegen sie bei 1,00 und 0,57.
 
 ## Zusammensetzen
 
@@ -27,6 +28,6 @@ Eine Websuche fand keine der Originalseiten. **Alle drei sind damit für einen V
 
 **Schild · neue Quelle besser geeignet.** 2.084 statt 3.482 Dreiecke, ein Material, echter Griff mit Halterungen auf der Rückseite, gemaltes Rabenmotiv. Native Blender-Datei mit sauberen Teilen, deshalb ergeben die LODs ohne Sonderbehandlung saubere Stufen (beim bisherigen Schild mussten 55 Nieten entfernt werden). Normal Map OpenGL. Die Texturen sind in `Shield.blend` eingepackt und byte-identisch mit dem Texturarchiv, sie werden also immer gefunden. Für den Export wurden sie aus dem Archiv neu verknüpft. Download-Gewicht praktisch gleich (0,80 gegen 0,77). Schwächste Stelle ist die UV-Ausnutzung von nur 27 %, bei 1024 px wirkt die Holzmaserung aus der Nähe weicher als beim bisherigen Schild. Das Rabenmotiv ist eine Gestaltungsentscheidung, der bisherige Schild ist unbemalt.
 
-**Speer · neue Quelle nicht besser geeignet.** Es ist ein kurzer Wurfspeer, 1,44 m lang mit nur 1,3 cm Schaft, verwittertes Naturholz, schmale Spitze mit Lederwicklung. Er sieht historischer aus als der rote Schaft der bisherigen Quelle. Dagegen sprechen drei Materialien (9 statt 3 Textur-Uploads), Normal Maps in DirectX-Konvention (Grünkanal müsste gedreht werden) und eine Wicklung, die mit 11.688 von 12.956 Dreiecken fast das ganze Modell ausmacht. Auf 2,2 m skaliert wäre der Schaft 2 cm dick, schlanker als jeder andere Teil des Stands. Ein Testexport lohnt sich nur, wenn der Naturholz-Look gewünscht ist.
+**Speer · neue Quelle nicht besser geeignet.** Es ist ein kurzer Wurfspeer, 1,44 m lang mit nur 1,3 cm Schaft, verwittertes Naturholz, schmale Spitze mit Lederwicklung. Er sieht historischer aus als der rote Schaft der bisherigen Quelle. Dagegen sprechen drei Materialien (9 statt 3 Textur-Uploads), Normal Maps in DirectX-Konvention (Grünkanal müsste gedreht werden) und eine Wicklung, die mit 11.688 von 12.956 Dreiecken fast das ganze Modell ausmacht. Auf 2,2 m skaliert wäre der Schaft 2 cm dick, schlanker als jeder andere Teil des Stands. Inzwischen ist er trotzdem exportiert. Die drei Materialien sind zu einem Atlas zusammengeführt (3 statt 9 Uploads), die Normal Maps auf OpenGL gedreht, und die Wicklung ist ab Low durch eine einfache Hülle ersetzt.
 
 **Kiste · geeignet.** Low-Poly (1.956 Dreiecke), vollständige PBR-Texturen, Normal Maps OpenGL. Die Materialzuordnung war beim Assimp-Export verloren gegangen und wurde rekonstruiert (siehe `viking-chest/ANLEITUNG.md`). Die Einheit im DAE war falsch (Kiste 2 cm groß), sie wurde auf 0,90 m Breite skaliert.

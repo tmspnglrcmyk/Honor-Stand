@@ -216,7 +216,7 @@ def lod_bytes(o):
     buf = b''.join(np.array(k[0], np.uint16).tobytes() for k in verts) + \
           b''.join(np.array(k[1], np.uint16).tobytes() for k in verts) + \
           b''.join(np.array(k[2], np.uint16).tobytes() for k in verts) + np.array(ind, np.uint16).tobytes()
-    return len(zlib.compress(buf, 9)) * 0.82, len(verts)
+    return len(zlib.compress(buf, 9)) * 0.82 + 75, len(verts)   # +75 Byte Kopfdaten je Fläche (Messung Helm)
 
 r = float(np.linalg.norm(hmax - hmin) / 2)
 dm, dlo, dl = min(r / 0.24, 512), min(r / 0.06, 512), min(r / 0.03, 512)

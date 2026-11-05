@@ -1,46 +1,61 @@
-# Speer (Nachtrag) · Upload-Anleitung Second Life
+# Speer (Nachtrag) · Upload-Anleitung Second Life · Fassung 2,20 m
 
-Wurfspeer aus `spear-nachtrag-modell.fbx` mit Stahlspitze, Lederwicklung und verwittertem Holzschaft. Statisches Dekoobjekt, Originalgröße 1,44 m (0,035 × 0,019 × 1,440 m), Spitze nach +Z.
+Wurfspeer aus `spear-nachtrag-modell.fbx` mit Stahlspitze, Lederwicklung und verwittertem Holzschaft. Statisches Dekoobjekt, **2,20 m lang** (0,053 × 0,030 × 2,200 m), Spitze nach +Z. Gleichmäßig um den Faktor 1,528 aus der Originalgröße 1,44 m vergrößert, die Form ist dabei unverändert. Der Schaft ist jetzt 2,0 cm dick, die Spitze 5,3 cm breit.
+
+**Bitte in SL nicht weiter skalieren.** LODs und Physik sind für genau diese Größe gebaut. Jede Vergrößerung in SL erhöht den LI.
 
 ## Dateien
 
 | Datei | Zweck |
 |---|---|
-| `Speer.dae` | High, 12.956 Dreiecke (Originalgeometrie, drei Teile vereint) |
-| `Speer_LOD2.dae` | Medium, 1.502 Dreiecke (Blender Decimate) |
-| `Speer_LOD1.dae` | Low, 154 Dreiecke, Wicklung als sechsseitige Hülle in Lederfarbe |
-| `Speer_LOD0.dae` | Lowest, 12 Dreiecke, von Hand, trifft die Box ohne Anker |
-| `Speer_PHYS.dae` | Physik, Quader |
+| `Speer.dae` | High, 12.956 Dreiecke (Originalgeometrie, unverändert bis auf die Größe) |
+| `Speer_LOD2.dae` | Medium, 618 Dreiecke. Schaft und Spitze mit Blender reduziert, die Wicklung als achtseitige Lederhülse |
+| `Speer_LOD1.dae` | Low, 92 Dreiecke, Wicklung als sechsseitige Hülse |
+| `Speer_LOD0.dae` | Lowest, 8 Dreiecke, von Hand gebaut, trifft die Box ohne Anker |
+| `Speer_PHYS.dae` | Physik, Quader 0,053 × 0,030 × 2,20 m |
 | `Texturen/Speer_Farbe.png` | Farbe mit AO (1024, Atlas aus Holz, Stahl, Leder) |
 | `Texturen/Speer_Normal.png` | Normal Map OpenGL, Alpha = Glanzgrad |
 | `Texturen/Speer_Glanz.png` | Specular Map, Alpha = Umgebungsreflexion |
 | `Texturen/PBR_optional/` | BaseColor, Normal, ORM |
-| `Blender/Speer.blend` | Arbeitsdatei |
+| `Blender/Speer.blend` | Arbeitsdatei mit High, LODs, Physik und Material |
+| `Vorschau_Speer.png` | alle Stufen und Nahansicht der Spitze |
 
-## Upload
+Die Texturen sind dieselben wie in der 1,44-m-Fassung. Wer sie dort schon hochgeladen hat, kann sie weiterverwenden.
 
-High `Speer.dae`, Medium `Speer_LOD2.dae`, Low `Speer_LOD1.dae`, Lowest `Speer_LOD0.dae`, Physik `Speer_PHYS.dae` „From file“, Scale 1, „Include textures“ an. Nach dem Rezzen Normal und Glanz zuweisen, Repeats 1, Alpha mode None, Physics Shape Type „Convex Hull“. Pflicht-Uploads 3 Texturen.
+## Upload im Mesh-Uploader
 
-## Ein Material statt drei
+1. `Speer.dae` als Modell wählen.
+2. *Level of Detail* Medium „Load from file“ `Speer_LOD2.dae`, Low `Speer_LOD1.dae`, Lowest `Speer_LOD0.dae`.
+3. *Physics* „From file“ `Speer_PHYS.dae`, Analyze ist nicht nötig.
+4. *Upload options* Scale 1, „Include textures“ an.
+5. „Calculate weights & fee“. Bitte Download-, Physik- und Server-Gewicht notieren und mir melden.
 
-Das Original hat drei Materialien mit je drei 2048er-Karten (9 Uploads, drei Flächen mit Kopfdaten in jeder LOD-Stufe). Alle drei liegen jetzt auf einem Atlas. Die Atlas-UV entstand aus den Original-UVs nur durch Verschieben und gleichmäßiges Skalieren der Inseln, ohne Drehung und ohne Spiegelung (geprüft, höchstens 0,02°). Deshalb ließen sich die Normal Maps direkt umbacken. Die Spitze hat doppelte Texeldichte gegenüber Schaft und Wicklung. Die Original-Normal-Maps sind DirectX, der Grünkanal wurde für SL auf OpenGL gedreht.
+Nach dem Rezzen gilt: `Speer_Normal.png` als Bumpiness (normal), `Speer_Glanz.png` als Shininess (specular), Repeats 1, Alpha mode None, Physics Shape Type „Convex Hull“.
 
-## LI-Schätzung
+## LI · Schätzung, nicht in SL geprüft
 
-Schätzer mit Kopfaufschlag je Fläche, kalibriert auf die Messung am Helm (1,9). Radius 0,72 m, Umschaltabstände etwa 3 m, 12 m, 24 m.
+Schätzer mit Kopfaufschlag je Fläche, kalibriert auf die Messung am Helm (Uploader 1,9). Radius 1,10 m, Umschaltabstände etwa 4,6 m, 18 m und 37 m.
 
-| Stufe | Dreiecke | Bytes geschätzt |
-|---|---|---|
-| High | 12.956 | 142.023 |
-| Medium | 1.502 | 26.740 |
-| Low | 154 | 3.060 |
-| Lowest | 12 | 353 |
+| Stufe | Dreiecke | Bytes geschätzt | Anteil geschätzt |
+|---|---|---|---|
+| High | 12.956 | 142.003 | 0,24 |
+| Medium | 618 | 8.860 | 0,22 |
+| Low | 92 | 2.085 | 0,16 |
+| Lowest | 8 | 261 | 0,34 |
 
-Download im Uploader erwartet etwa **1,08**, LI erwartet **1**. Wird der Speer in SL vergrößert, steigt der LI. Auf 2,2 m skaliert wären es geschätzt etwa 1,6, also 2 LI. Für 2,2 m bitte vorher Bescheid geben, dann baue ich die LODs für diese Größe.
+**Geschätzter Download im Uploader etwa 0,96, geschätzter LI 1.** Zum Vergleich: Die 1,44-m-Fassung, in SL auf 2,20 m vergrößert, kommt nach demselben Schätzer auf etwa 1,74, also 2 LI. Der Abstand zur Rundungsgrenze 1,5 beträgt etwa 0,5. Die Kalibrierung beruht auf einer einzigen Messung, deshalb ist der Wert bis zur Prüfung in SL eine Schätzung.
+
+## Was sich gegenüber der 1,44-m-Fassung geändert hat
+
+- **Größe** Gleichmäßig auf 2,20 m skaliert, die Physik-Box mit.
+- **Medium** Bei 2,20 m gilt das Medium von 4,6 bis 18 m und kostete mit 1.502 Dreiecken allein etwa 0,68. Jetzt hat es 618 Dreiecke. Die Spitze bleibt rund, die Wicklung wird zu einer glatten Lederhülse.
+- **Low** 92 statt 154 Dreiecke.
+- **Lowest** 8 statt 12 Dreiecke, sechs Punkte, alle Extreme auf der Box.
+- **Farbe der Hülse** RGB [93, 84, 73]. Das ist das Mittel der sichtbaren Lederfläche, ohne die verdeckten Unterseiten der Lederstreifen (AO nahe null). An einer Stelle mit ruhiger Umgebung abgegriffen, als unverzerrte 2-Pixel-UV-Fläche.
 
 ## Schwächste Stelle
 
-Das Lowest ist ein dünner brauner Stab mit Spitze. Die Spitze bekommt dort keinen eigenen Stahlton, aber ab 24 m Abstand ist sie nur ein bis zwei Pixel breit. Die Atlas-Textur hat für die Wicklung weniger Auflösung als das 2048er-Original.
+Ab 4,6 m ist die Wicklung eine glatte Hülse, die Rillen der Lederstreifen sind dort nur noch in der High-Stufe zu sehen. Das Lowest (ab 37 m) ist ein brauner Stab mit dunkler Spitze. Die Texturauflösung ist gegenüber 1,44 m auf etwa zwei Drittel je Meter gesunken, aus nächster Nähe wirkt die Holzmaserung etwas weicher.
 
 ## Quelle und Lizenz
 

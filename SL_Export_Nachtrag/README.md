@@ -6,7 +6,8 @@ Testexporte aus den nachgereichten Quellen. Der bisherige Export unter `SL_Expor
 |---|---|---|
 | `Schild/` | Schild aus `Shield.blend` (Rabenschild), 0,85 m | 0,80 |
 | `viking-chest/` | Wikingerkiste, 0,90 × 0,41 × 0,53 m | 0,27 |
-| `Speer/` | Wurfspeer aus `spear-nachtrag-modell.fbx`, 1,44 m, ein Material | 1,08 |
+| `Speer/` | Speer aus `spear-nachtrag-modell.fbx`, **2,20 m**, ein Material | 0,96 (Schätzung, nicht in SL geprüft) |
+| `_Archiv/Speer_1_44m/` | vorige Fassung in Originalgröße, nicht mehr zum Upload gedacht | |
 | `Vorschau.png` | gemeinsame Vorschau, dazu der neue Speer im Vergleich | |
 
 Der neue Speer wurde auf Wunsch nachträglich SL-fertig gemacht, Einzelheiten in `Speer/ANLEITUNG.md`. Die Werte für Schild und Kiste in der Tabelle stammen noch vom alten Schätzer. Mit dem Kopfaufschlag aus der Helm-Messung liegen sie bei 1,00 und 0,57.

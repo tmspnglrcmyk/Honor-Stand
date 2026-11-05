@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+<asset><contributor><authoring_tool>Honor-Stand SL Export (Blender 5.2.3 LTS, eigener DAE-Writer)</authoring_tool></contributor>
+<unit name="meter" meter="1"/><up_axis>Z_UP</up_axis></asset>
+<library_effects><effect id="Speer_Material-fx"><profile_COMMON>
+<technique sid="common"><lambert><diffuse><color sid="diffuse">0.8 0.8 0.8 1</color></diffuse></lambert></technique></profile_COMMON></effect></library_effects>
+<library_materials><material id="Speer_Material" name="Speer_Material"><instance_effect url="#Speer_Material-fx"/></material></library_materials>
+<library_geometries><geometry id="Speer_PHYS-mesh" name="Speer_PHYS"><mesh>
+<source id="Speer_PHYS-pos"><float_array id="Speer_PHYS-pos-a" count="24">-0.0174077 -0.00968899 -0.719793 -0.0174077 -0.00968899 0.719793 -0.0174077 0.00968899 -0.719793 -0.0174077 0.00968899 0.719793 0.0174077 -0.00968899 -0.719793 0.0174077 -0.00968899 0.719793 0.0174077 0.00968899 -0.719793 0.0174077 0.00968899 0.719793</float_array><technique_common><accessor source="#Speer_PHYS-pos-a" count="8" stride="3"><param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+<source id="Speer_PHYS-nrm"><float_array id="Speer_PHYS-nrm-a" count="18">-1 0 0 0 -1 0 0 0 -1 0 0 1 0 1 0 1 0 0</float_array><technique_common><accessor source="#Speer_PHYS-nrm-a" count="6" stride="3"><param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/></accessor></technique_common></source>
+<source id="Speer_PHYS-uv"><float_array id="Speer_PHYS-uv-a" count="2">0 0</float_array><technique_common><accessor source="#Speer_PHYS-uv-a" count="1" stride="2"><param name="S" type="float"/><param name="T" type="float"/></accessor></technique_common></source>
+<vertices id="Speer_PHYS-vtx"><input semantic="POSITION" source="#Speer_PHYS-pos"/></vertices>
+<triangles material="Speer_Material" count="12"><input semantic="VERTEX" source="#Speer_PHYS-vtx" offset="0"/><input semantic="NORMAL" source="#Speer_PHYS-nrm" offset="1"/><input semantic="TEXCOORD" source="#Speer_PHYS-uv" offset="2" set="0"/><p>0 0 0 1 0 0 3 0 0 0 0 0 3 0 0 2 0 0 2 4 0 3 4 0 7 4 0 2 4 0 7 4 0 6 4 0 6 5 0 7 5 0 5 5 0 6 5 0 5 5 0 4 5 0 4 1 0 5 1 0 1 1 0 4 1 0 1 1 0 0 1 0 2 2 0 6 2 0 4 2 0 2 2 0 4 2 0 0 2 0 7 3 0 3 3 0 1 3 0 7 3 0 1 3 0 5 3 0</p></triangles>
+</mesh></geometry></library_geometries>
+<library_visual_scenes><visual_scene id="Scene" name="Scene"><node id="Speer_PHYS" name="Speer_PHYS" type="NODE"><matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+<instance_geometry url="#Speer_PHYS-mesh" name="Speer_PHYS"><bind_material><technique_common><instance_material symbol="Speer_Material" target="#Speer_Material"><bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/></instance_material></technique_common></bind_material></instance_geometry>
+</node></visual_scene></library_visual_scenes><scene><instance_visual_scene url="#Scene"/></scene></COLLADA>
